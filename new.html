@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>temperature converter</title>
+    <style>
+        body {
+            padding: 50px 100px;
+            background-color: rgb(175, 202, 242);
+        }
+
+        h1 {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        #container {
+            text-align: center;
+            background-color: rgb(239, 137, 137);
+            /* display: inline-block; */
+            padding: 50px;
+        }
+
+        .inputclass {
+            display: inline-block;
+        }
+
+        .num {
+            padding: 7px 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 5px;
+            font-size: 30px;
+            font-weight: bold;
+            width: 250px;
+            text-align: center;
+
+        }
+
+        label {
+            font-size: 30px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Temperature Converter</h1>
+    <div id="container">
+
+        <div class="inputclass">
+            <label>Celcius</label><br>
+            <input type="number" value="0" id="cel" class="num">
+        </div>
+        <div class="inputclass">
+            <label>Farenheit</label><br>
+            <input type="number" value="32" id="far" class="num">
+        </div>
+        <div class="inputclass">
+            <label>kelvin</label><br>
+            <input type="number" value="273.15" id="kel" class="num">
+        </div>
+    </div>
+
+    <script>
+        let cel = 
+            document.getElementById('cel');
+        let far = 
+            document.getElementById('far');
+        let kel = 
+            document.getElementById('kel');
+        cel.oninput = function () {
+            let f = (parseFloat(cel.value) * 9) / 5 + 32;
+            far.value = parseFloat(f.toFixed(4));
+  
+            let k = (parseFloat(cel.value) + 273.15);
+            kel.value = parseFloat(k.toFixed(4));
+        }
+        far.oninput = function () {
+            let c = ((parseFloat(
+                far.value) - 32) * 5) / 9;
+            cel.value = parseFloat(c.toFixed(4));
+  
+            let k = (parseFloat(
+                far.value) - 32) * 5 / 9 + 273.15;
+            kel.value = parseFloat(k.toFixed(4));
+        }
+        kel.oninput = function () {
+            let f = (parseFloat(
+                kel.value) - 273.15) * 9 / 5 + 32;
+            far.value = parseFloat(f.toFixed(4));
+  
+            let c = (parseFloat(kel.value) - 273.15);
+            cel.value = parseFloat(c.toFixed(4));
+        }
+    </script>
+    
+</body>
+
+</html>
